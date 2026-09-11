@@ -74,13 +74,10 @@ binding = "KV"
 id = "84fbd4b489594818b5033db83c2b9447"
 
 # ===================== D1 =====================
-# 使用 Cloudflare 的 Automatic resource provisioning：
-# 省略 database_id，部署时 wrangler（>= 4.45.0）会自动创建同名 D1 库并回写 id。
-# 若你的 wrangler 版本较旧，可取消下方注释并填入你自己的 database_id。
-# [[d1_databases]]
-# binding = "DB"
-# database_name = "openlist"
-# database_id = ""
+[[d1_databases]]
+binding = "DB"
+database_name = "openlist-db"
+database_id = "04fb266d-9016-497f-b349-3d049772f6dd"
 
 # ===================== Durable Objects（DB_DRIVER = "do" 时启用）=====================
 # DO 内置 SQLite 存储（强一致性 + 事务），适合需要一致性的单租户部署。
