@@ -2,7 +2,7 @@ name = "openlist-tsworkers"
 main = "src/backend/worker.ts"
 compatibility_date = "2026-08-04"
 compatibility_flags = ["nodejs_compat"]
-workers_dev = false
+workers_dev = true
 preview_urls = false
 
 [assets]
@@ -19,7 +19,7 @@ ENVIRONMENT = "production"
 #   key       - 分 key 存储，每实体一条记录（openlist_tbl:<table>:<主键>），
 #               避免大 JSON 读写与单 key 过大
 #   sql       - 关系数据库表格式，与 Go 后端完全一致（适用于 D1 / MySQL）
-DB_FORMAT = "map"
+DB_FORMAT = "key"
 
 # ===================== 数据库驱动（DB_DRIVER）=====================
 # 决定底层存储系统（大小写不敏感）：
@@ -30,7 +30,7 @@ DB_FORMAT = "map"
 #   d1    - Cloudflare D1（需下方 [[d1_databases]] 绑定）
 #   do    - Cloudflare Durable Objects（需下方 [[durable_objects]] 绑定与 migrations）
 #   mysql - 外部 MySQL（仅 Node 容器运行时，需 MYSQL_URL 或 MYSQL_* 分项）
-DB_DRIVER = "auto"
+DB_DRIVER = "kv"
 
 # ===================== 表名前缀（TABLE_PREFIX，仅 DB_FORMAT = "sql" 时生效）=====================
 # SQL 表名 = 前缀 + Go 的复数表名（setting_items/sharing_dbs/storages/users/metas）。
@@ -71,8 +71,7 @@ ENCRYPTION_SECRET = ""
 # 内存 JSON 数据库（仅测试/本地调试用，重启即失）
 # DATABASE_JSON = ""
 
-[[kv_namespaces]]
-binding = ""
+[[kv_namespaces]]`nbinding = "KV"`nid = "84fbd4b489594818b5033db83c2b9447"
 
 # ===================== D1 =====================
 # 使用 Cloudflare 的 Automatic resource provisioning：
